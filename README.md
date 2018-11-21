@@ -4,13 +4,14 @@ the motivation for revisiting and releasing this demo. (Originally, it was just
 going to be a few examples covering how to use libcurl in a C program, but I'd 
 abandoned it a while back.)
 
-The demo is my attempt at exploring some of the various ways you can make 
-concurrent Curl requests using common C libraries and patterns. (The pthreads 
-example has a hard dependency on GCC by way of the GNU_SOURCE directive.) The 
-programs don't do a whole lot -- they make concurrent/parallel requests to each 
-of a list of URLs and report the response status code of each request -- but 
-they were complicated enough that I was forced to reacquaint myself with C and 
-its ecosystem and I learned quite a bit about Curl, OpenMP and POSIX threads.
+The included programs are my attempts at exploring some of the various ways you 
+can make concurrent/parallel Curl requests using common C libraries and 
+patterns. (The pthreads example has a hard dependency on GCC by way of the 
+GNU_SOURCE directive.) The programs don't do a whole lot -- they make 
+concurrent/parallel requests to each of a list of URLs and report the response 
+status code of each request -- but they were complicated enough that I was 
+forced to reacquaint myself with C and its ecosystem and I learned quite a bit 
+about Curl, OpenMP and POSIX threads.
 
 The current examples cover:
 

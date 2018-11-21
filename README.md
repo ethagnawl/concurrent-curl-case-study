@@ -25,3 +25,5 @@ Each program can be built and run using: `make $DEMO && ./$DEMO`
 # Resources
 - [21st Century C](http://shop.oreilly.com/product/0636920033677.do)
 - https://curl.haxx.se/libcurl/c/10-at-a-time.html
+- [OpenMP API](https://docs.oracle.com/cd/E19059-01/stud.10/819-0501/1_Summary.html)
+- [pthreads - Linux man page](https://linux.die.net/man/7/pthreads)

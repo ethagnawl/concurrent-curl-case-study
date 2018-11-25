@@ -6,12 +6,11 @@ abandoned it a while back.)
 
 The included programs are my attempts at exploring some of the various ways you 
 can make concurrent/parallel Curl requests using common C libraries and 
-patterns. (The pthreads example has a hard dependency on GCC by way of the 
-GNU_SOURCE directive.) The programs don't do a whole lot -- they make 
-concurrent/parallel requests to each of a list of URLs and report the response 
-status code of each request -- but they were complicated enough that I was 
-forced to reacquaint myself with C and its ecosystem and I learned quite a bit 
-about Curl, OpenMP and POSIX threads.
+patterns. The programs don't do a whole lot -- they make concurrent/parallel 
+requests to each of a list of URLs and report the response status code of each 
+request -- but they were complicated enough that I was forced to reacquaint 
+myself with C and its ecosystem and I learned quite a bit about Curl, OpenMP 
+and POSIX threads.
 
 The current examples cover:
 
@@ -19,8 +18,17 @@ The current examples cover:
 - pthreads (concurrent-curl-pthreads)
 - libcurl's multi interface (concurrent-curl-multi)
 
+# Dependencies
+- libcurl (all)
+- C11 (concurrent-curl-pthreads)
+- GNU_SOURCE (concurrent-curl-pthreads)
+- openmp (concurrent-curl-openmp)
+
 # Run
 Each program can be built and run using: `make $DEMO && ./$DEMO`
+
+# Conclusions
+TODO
 
 # Resources
 - [21st Century C](http://shop.oreilly.com/product/0636920033677.do)

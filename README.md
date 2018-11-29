@@ -13,7 +13,7 @@ myself with C and its ecosystem and I learned quite a bit about Curl, OpenMP
 and POSIX threads.
 
 The current examples cover:
-
+- base case (single-threaded-curl)
 - OpenMP (concurrent-curl-openmp)
 - pthreads (concurrent-curl-pthreads)
 - libcurl's multi interface (concurrent-curl-multi)

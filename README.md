@@ -22,13 +22,28 @@ The current examples cover:
 - libcurl (all)
 - C11 (concurrent-curl-pthreads)
 - GNU_SOURCE (concurrent-curl-pthreads)
-- openmp (concurrent-curl-openmp)
+- OpenMP (concurrent-curl-openmp)
 
 # Run
 Each program can be built and run using: `make $DEMO && ./$DEMO`
 
 # Conclusions
-TODO
+
+I was very surprised by two things:
+
+## How little code was required to parallelize the base demo using OpenMP and pthreads
+
+Parallelizing the single threaded base program was _shockingly_ easy. The program is very simple, but the OpenMP version only required _one_ additional line of code and one additional compiler flag; the pthreads version required seven new lines of code (including the pthreads header, defining GNU_SOURCE) and an additional compiler flag. Now, these programs weren't doing anything complicated like orchestrating access to shared memory, but, IMO, these solutions are still much simpler than analogous solutions in other languages I've worked with. (This may/may not be a good thing, as those other languages may provide additional safeguards that C does not.)
+
+## How much more code was required by the Curl multi interface example
+
+To be fair, this program was very heavily inspired by a pre-existing program, so the solution wasn't as tidy as the others written for the purposes of this case study. However, there does seem to be quite a bit more orchestration/bookkeeping code required by the multi interface program (writing/reading file descriptors, sleeps, Curl cleanup utilities, etc.). This program did include some error handling that the threaded programs didn't, but this only accounted for ~10 of the additional ~60 lines of code in the multi example. There's likely good reason for the additional code in this program and since curl works everywhere, this example is probably more portable than the others. It may also be more performant than the other examples -- I haven't done any benchmarking.
+
+If I was to pick one of these solutions to use in a production application, I'd probably pick the pthreads version, as it should be more future proof (it's part of the modern C11 standard) and there's no non-standard compiler dependency (OpenMP). Of course, this hypothetical choice would also depend on the target environment, as an application using OpenMP or Curl's multi interface would likely have a wider reach than one relying on C11.
+
+# Future Work
+- benchmarks
+- stress tests
 
 # Resources
 - [21st Century C](http://shop.oreilly.com/product/0636920033677.do)

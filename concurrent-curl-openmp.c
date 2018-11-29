@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void dispatch_request(char *url) {
+void *dispatch_request(char *url) {
     CURL *curl = curl_easy_init();
     int http_code = 0;
 
@@ -22,6 +22,8 @@ void dispatch_request(char *url) {
     print_response_status_code(url, http_code);
 
     curl_easy_cleanup(curl);
+    
+    return NULL;
 }
 
 int main() {

@@ -31,17 +31,15 @@ void *dispatch_request(void *vurl) {
 }
 
 int main() {
-  int urls_length = (sizeof(urls) / sizeof(urls[0]));
-  int pthread_count = urls_length;
-  pthread_t pthreads[pthread_count];
+    int urls_length = (sizeof(urls) / sizeof(urls[0]));
+    int pthread_count = urls_length;
+    pthread_t pthreads[pthread_count];
 
-  for (int i = 0; i < urls_length; i += 1) {
-      // printf("create (named) thread for: %s\n", urls[i]);
-      pthread_create(&pthreads[i], NULL, dispatch_request, urls[i]);
-      // pthread_setname_np(pthreads[i], urls[i]);
-  }
+    for (int i = 0; i < urls_length; i += 1) {
+        pthread_create(&pthreads[i], NULL, dispatch_request, urls[i]);
+    }
 
-  for (int i = 0; i < urls_length; i += 1) {
-    pthread_join(pthreads[i], NULL);
-  }
+    for (int i = 0; i < urls_length; i += 1) {
+        pthread_join(pthreads[i], NULL);
+    }
 }

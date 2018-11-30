@@ -27,10 +27,10 @@ void *dispatch_request(char *url) {
 }
 
 int main() {
-  int urls_length = (sizeof(urls) / sizeof(urls[0]));
+    int urls_length = (sizeof(urls) / sizeof(urls[0]));
 
-  #pragma omp parallel for
-  for (int i = 0; i < urls_length; i += 1) {
-      dispatch_request(urls[i]);
-  }
+    #pragma omp parallel for
+    for (int i = 0; i < urls_length; i += 1) {
+        dispatch_request(urls[i]);
+    }
 }
